@@ -6,17 +6,25 @@ import {
       webDarkTheme,
 } from "@fluentui/react-components";
 import { Home } from './Routes/Home';
-import { CreateOrganization } from './Routes/createOrganization';
+import {  CreateOrganizationComponent } from './components/organizations/createOrganization/createOrganization';
+import { CREATE_ORGANIZATION_PATH, DASHBOARD_PATH, HOME_PATH, LANDING_PATH } from './helpers/paths';
+import { Dashboard } from './components/dashboard/Dashboard';
 function App() {
 
   const router = createBrowserRouter([
-  { path: '/', element: <Landing /> },
-  { path: "/home", element: <Home /> },
-        {
-      path: "/create-organization",
-              element: <CreateOrganization />
-              
-        }]);
+  { path: LANDING_PATH, element: <Landing /> },
+  { path: HOME_PATH, element: <Home /> ,
+     children: [
+    {
+      path: DASHBOARD_PATH,
+      element: <Dashboard />,
+    },
+    {
+      path: CREATE_ORGANIZATION_PATH,
+      element: <CreateOrganizationComponent />,
+    }
+  ]},
+  ]);
 
   return (
     <>

@@ -2,6 +2,7 @@ import { Button } from "@fluentui/react-components";
 import { LandingCarousel } from "../components/ui/LandingCarousel";
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { HOME_DASHBOARD_PATH } from "../helpers/paths";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Landing = () => {
     // Handle loading state
     return null;
   }
+  
 
   if (!user) return null;
   return (
@@ -30,7 +32,7 @@ const Landing = () => {
             userButtonAvatarBox: { width: "80px", height: "80px"},
           },
         }}/>
-      <p>Bienvenido {`${user.firstName}`}, puedes <a href="/home">Ir al panel de contenido</a></p>
+      <p>Bienvenido {`${user.firstName}`}, puedes <a href={HOME_DASHBOARD_PATH}>Ir al panel de contenido</a></p>
       </SignedIn>
       </main>
     </div>
