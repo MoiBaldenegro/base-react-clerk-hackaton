@@ -6,11 +6,17 @@ import {
       webDarkTheme,
 } from "@fluentui/react-components";
 import { Home } from './Routes/Home';
+import { CreateOrganization } from './Routes/createOrganization';
 function App() {
 
   const router = createBrowserRouter([
   { path: '/', element: <Landing /> },
-  { path: "/home", element: <Home /> },]);
+  { path: "/home", element: <Home /> },
+        {
+      path: "/create-organization",
+              element: <CreateOrganization />
+              
+        }]);
 
   return (
     <>
