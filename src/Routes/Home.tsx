@@ -1,10 +1,12 @@
 import {SignedIn, SignedOut, SignIn, UserButton} from "@clerk/clerk-react";
+import { Controlled as AsideBar } from './example'; // esta ruta hay que ponerla bien <========
 import "./global.css";
 import { useNavigate } from "react-router-dom"
 export const Home = () => {
   const navigate = useNavigate();
   return (
    <main className="homeContainer">
+     <AsideBar/>
     <SignedIn >
         <UserButton showName appearance={{
             elements: {
