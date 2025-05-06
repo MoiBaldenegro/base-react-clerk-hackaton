@@ -1,7 +1,8 @@
-import { CreateOrganization, SignedIn, SignedOut, SignIn, UserButton} from "@clerk/clerk-react";
+import {SignedIn, SignedOut, SignIn, UserButton} from "@clerk/clerk-react";
 import "./global.css";
-
+import { useNavigate } from "react-router-dom"
 export const Home = () => {
+  const navigate = useNavigate();
   return (
    <main className="homeContainer">
     <SignedIn >
@@ -17,8 +18,8 @@ export const Home = () => {
         <div className="home">
             <h1>Welcome to the Home Page</h1>
             <p>This is a protected route. Only signed-in users can see this.</p>
-            <CreateOrganization />
             <p>To create an organization, please fill in the form.</p>
+            <button onClick={()=> navigate("./create-navigate")}>Crear nueva organizacion</button>
         </div>
     </SignedIn>  
     <SignedOut>
