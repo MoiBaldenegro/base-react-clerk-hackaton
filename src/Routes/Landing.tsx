@@ -1,6 +1,6 @@
 import { Button } from "@fluentui/react-components";
 import { LandingCarousel } from "../components/ui/LandingCarousel";
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { PricingTable, SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { HOME_DASHBOARD_PATH } from "../helpers/paths";
 
@@ -13,12 +13,11 @@ const Landing = () => {
     return null;
   }
 
-  if (!user) return null;
   return (
     <div className="landingContainer">
         <header>
         <SignedOut>
-          <SignInButton />
+          <SignInButton />       
         </SignedOut>
         <h1>Bienvenido a la plataforma de gestión de contenido</h1>
       </header>
@@ -31,7 +30,7 @@ const Landing = () => {
             userButtonAvatarBox: { width: "80px", height: "80px"},
           },
         }}/>
-      <p>Bienvenido {`${user.firstName}`}, puedes <a href={HOME_DASHBOARD_PATH}>Ir al panel de contenido</a></p>
+      <p>Bienvenido {`${user?.firstName}`}, puedes <a href={HOME_DASHBOARD_PATH}>Ir al panel de contenido</a></p>
       </SignedIn>
       </main>
     </div>
