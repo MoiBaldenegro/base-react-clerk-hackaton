@@ -6,20 +6,22 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
     }
 }
 
 .homeContainer {
     display: flex;
     height: 100vh;
-    width: 100vw;
+    max-height: 100vh;
 
-    .home{
+    
+    >section{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid blue;
-        width: 100%;
+        transition: all 300ms ease;
+
+       
     }
+  
 }

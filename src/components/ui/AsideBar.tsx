@@ -58,7 +58,7 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from "@fluentui/react-icons";
-import { DASHBOARD_PATH} from "../../helpers/paths";
+import { CODE_EDITOR_PATH, DASHBOARD_PATH} from "../../helpers/paths";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -72,14 +72,11 @@ const useStyles = makeStyles({
   },
   content: {
     flex: "1",
-    display: "grid",
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
   field: {
     display: "flex",
-    marginTop: "4px",
-    marginLeft: "8px",
     flexDirection: "column",
     gridRowGap: tokens.spacingVerticalS,
   },
@@ -109,8 +106,12 @@ const Reports = bundleIcon(
 );
 
 type DrawerType = Required<DrawerProps>["type"];
+interface Props extends DrawerType {
+  onChange: () => void;
+  props?: Partial<NavDrawerProps>;
+}
 
-export const Basic = (props: Partial<NavDrawerProps>) => {
+export const Basic = ({ props, onChange}: Props) => {
   const navigate = useNavigate();
   const styles = useStyles();
 
@@ -140,7 +141,10 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
       >
         <NavDrawerHeader>
           <Tooltip content="Close Navigation" relationship="label">
-            <Hamburger onClick={() => setIsOpen(!isOpen)} />
+            <Hamburger onClick={() => {
+              setIsOpen(!isOpen)
+              onChange();
+            }} />
           </Tooltip>
         </NavDrawerHeader>
 
@@ -156,6 +160,14 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
           <NavItem href={linkDestination} icon={<Dashboard />} value="1" onClick={() => navigate(DASHBOARD_PATH)}>
             Dashboard
           </NavItem>
+          <NavItem
+            icon={<PerformanceReviews />}
+            href={linkDestination}
+            value="5"
+            onClick={() => navigate(CODE_EDITOR_PATH)}
+          >
+            Code editor
+          </NavItem>
           <NavItem href={linkDestination} icon={<Announcements />} value="2">
             Announcements
           </NavItem>
@@ -169,13 +181,7 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<Search />} href={linkDestination} value="4">
             Profile Search
           </NavItem>
-          <NavItem
-            icon={<PerformanceReviews />}
-            href={linkDestination}
-            value="5"
-          >
-            Performance Reviews
-          </NavItem>
+          
           <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>
@@ -242,8 +248,10 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
         <div style={{  height: "max-content", position: "absolute", top:"5px", left:"14px"}}>
           <Tooltip content="Toggle navigation pane" relationship="label">
           <Hamburger
-            onClick={() => setIsOpen(!isOpen)}
-            {...restoreFocusTargetAttributes}
+            onClick={() => {
+              setIsOpen(true);
+              onChange();
+            }}
           />
         </Tooltip>
         </div>

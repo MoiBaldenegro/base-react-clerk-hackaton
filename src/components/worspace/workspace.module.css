@@ -1,6 +1,5 @@
-.dashboard{
-    width: 100%;
+.workspace{
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+
 }

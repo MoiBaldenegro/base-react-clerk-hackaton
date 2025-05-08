@@ -12,7 +12,6 @@ const Landing = () => {
     // Handle loading state
     return null;
   }
-  
 
   if (!user) return null;
   return (
@@ -21,7 +20,7 @@ const Landing = () => {
         <SignedOut>
           <SignInButton />
         </SignedOut>
-      
+        <h1>Bienvenido a la plataforma de gestión de contenido</h1>
       </header>
       <LandingCarousel  />
       <main>

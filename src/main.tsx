@@ -14,8 +14,9 @@ if (!PUBLISHABLE_KEY) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ClerkProvider appearance={{
+    <ClerkProvider  appearance={{
         baseTheme: dark,
+        
       }} publishableKey={PUBLISHABLE_KEY} afterSignOutUrl='/'>
       <App />
     </ClerkProvider>
