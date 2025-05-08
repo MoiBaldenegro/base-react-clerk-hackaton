@@ -1,4 +1,6 @@
 import { roomService } from '../services/room.service.js';
+import crypto from 'crypto';
+
 
 export const createRoom = async (req, res) => {
   const { roomName } = req.body;

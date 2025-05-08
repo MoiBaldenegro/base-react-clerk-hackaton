@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-const SOCKET_SERVER_URL = "http://localhost:5700";
+const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
 export default function CollaborativeEditor() {
   const { roomId } = useParams();

@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
+
 export default function CreateRoom() {
   const [roomName, setRoomName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -13,7 +15,7 @@ export default function CreateRoom() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.post("http://localhost:5700/api/rooms", {
+      const res = await axios.post(`${SOCKET_SERVER_URL}/api/rooms`, {
         roomName,
       });
       const { roomId } = res.data;
