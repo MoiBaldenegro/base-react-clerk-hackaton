@@ -1,7 +1,0 @@
-export const LANDING_PATH = "/";
-export const HOME_PATH = "home";
-export const DASHBOARD_PATH = "dashboard";
-export const CREATE_ORGANIZATION_PATH = "create-organization";
-export const HOME_DASHBOARD_PATH = "home/dashboard";
-export const WORKSPACE_PATH = "workspace";
-export const CODE_EDITOR_PATH = "code-editor";
