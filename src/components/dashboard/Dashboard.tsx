@@ -1,8 +1,10 @@
 import styles from './Dasboard.module.css';
-import { OrganizationList, OrganizationSwitcher, useOrganizationList,  Waitlist } from '@clerk/clerk-react'
+import { OrganizationList, OrganizationSwitcher, useOrganizationList,  useUser,  Waitlist } from '@clerk/clerk-react'
 import {  PricingTable } from '@clerk/clerk-react'
 
 export const Dashboard = () => {
+  const { user } = useUser();
+  console.log(user)
 
   const { isLoaded, setActive, userMemberships } = useOrganizationList({
     userMemberships: {
@@ -35,7 +37,43 @@ export const Dashboard = () => {
       <Waitlist />
       <PricingTable /> */}
       
-      <div>2</div>
+      <div>
+        <img src={`${user?.imageUrl}`} alt="avatar" width="50px" />
+        <ul>
+        <li>
+            <span>
+              Nombre:
+            </span>
+            <span>
+              {user?.fullName}
+            </span>
+          </li>
+          <li>
+            <span>
+              Miembro desde: 
+            </span>
+            <span>
+              {user?.createdAt?.toLocaleDateString()}
+            </span>
+          </li>
+          <li>
+            <span>
+              Cuenta de correo:
+            </span>
+            <span>
+              {user?.emailAddresses[0].emailAddress}
+            </span>
+          </li>
+          <li>
+            <span>
+              verificacion:
+            </span>
+            <span>
+              {user?.emailAddresses[0].verification.status}
+            </span>
+          </li>
+        </ul>
+      </div>
       <div>3</div>
       <div>4</div>
       <div>5</div>
