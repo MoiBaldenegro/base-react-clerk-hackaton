@@ -73,3 +73,38 @@ html{
   box-sizing: border-box;
   background-color: #000000 !important;
 }
+
+*{
+  /* Para Chrome, Edge, Safari */
+.miScroll {
+  scrollbar-width: thin;                 /* Firefox: barra delgada */
+  scrollbar-color: #6366f1  transparent; /* Firefox: thumb violeta, fondo transparente */
+}
+
+/* Oculta el track (fondo), deja el thumb visible y estiliza */
+.miScroll::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.miScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.miScroll::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.7); /* Violeta con transparencia */
+  border-radius: 8px;
+  border: 2px solid transparent;        /* Espacio alrededor del thumb */
+  background-clip: content-box;
+  transition: background 0.2s;
+}
+
+.miScroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 1); /* Más visible al pasar el mouse */
+}
+
+.miScroll::-webkit-scrollbar-button {
+  background: transparent; /* Flechas transparentes (algunos sistemas aún las muestran) */
+}
+
+}

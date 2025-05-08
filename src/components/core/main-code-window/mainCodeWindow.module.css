@@ -31,15 +31,18 @@
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
+
                 
                 >.runButton{
                     max-height: 32px;
                     white-space: nowrap;
+                    
                 }
             }
 
             >pre{
                 width: 100%;
+                overflow: auto;
             }
 
         }

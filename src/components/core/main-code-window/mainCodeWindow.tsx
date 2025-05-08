@@ -4,7 +4,7 @@ import styles from './mainCodeWindow.module.css';
 import { Button } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
 
-const API_KEY = 'TU_API_KEY_AQUI';
+const API_KEY = import.meta.env.VITE_RAPIDAPI_API_KEY; // Asegúrate de que la variable de entorno esté definida
 
 interface LanguageOption {
   id: number;
@@ -13,13 +13,28 @@ interface LanguageOption {
 
 const languageOptions: LanguageOption[] = [
   { id: 63, name: 'javascript' },
+  {
+    id:74, name: 'typescript'
+  },
   { id: 71, name: 'python' },
-  { id: 54, name: 'cpp' },
+  { id: 73, name: 'rust' },
+  {id:51, name: "C#"},
+  {id: 62, name: 'java 13.0.1' },
 ];
+const rustHelloWorld = `// proyecto inicial, para participar en el Hackathon de Midudev y Clerk
+// Puedes escribir tu código aquí
+// ¡Diviértete programando!
+// 🦀🦀🦀
+
+
+fn main() {
+    println!("Adios mundo cruel!...   T-T");
+}`;
+
 
 const MainCodeWindow: React.FC = () => {
-  const [code, setCode] = useState<string>('console.log("Hola mundo");');
-  const [language, setLanguage] = useState<LanguageOption>(languageOptions[0]);
+  const [code, setCode] = useState<string>(rustHelloWorld);
+  const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -98,6 +113,7 @@ const MainCodeWindow: React.FC = () => {
     }
     setLoading(false);
   };
+ 
 
   return (
     <div className={styles.container}>
@@ -122,7 +138,7 @@ const MainCodeWindow: React.FC = () => {
 
       
 
-      <CodeEditor language={language.name} theme="vs-dark" value={code} onChange={setCode} />
+      <CodeEditor language={language.name} theme="vs-dark" value={code} onChange={setCode}   />
 
       <div className={styles.console}>
       
