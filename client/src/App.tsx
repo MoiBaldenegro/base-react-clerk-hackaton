@@ -28,10 +28,10 @@ function App() {
       path: CREATE_ORGANIZATION_PATH,
       element: <CreateOrganizationComponent />,
     },
-    {
-      path: WORKSPACE_PATH,
-      element: <Workspace />,
-    },
+    // {
+    //   path: WORKSPACE_PATH,
+    //   element: <Workspace />,
+    // },
     {
       path: CODE_EDITOR_PATH,
       element: <PersonalEditor />,

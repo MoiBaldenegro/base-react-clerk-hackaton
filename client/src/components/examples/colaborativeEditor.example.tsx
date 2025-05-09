@@ -4,22 +4,27 @@ import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import MainCodeWindow from "../core/main-code-window/mainCodeWindow";
 import styles from "./example.module.css";
+import { useEditorStore } from "../../store/editor.store";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
 export default function CollaborativeEditor() {
+   const code = useEditorStore((state) => state.code);
+  const setCode = useEditorStore((state) => state.setCode);
+
   const { roomId } = useParams();
-  const [code, setCode] = useState<string>("");
   const [users, setUsers] = useState([]);
   const socketRef = useRef(null);
   const isRemoteUpdate = useRef(false);
 
   useEffect(() => {
+    
     socketRef.current = io(SOCKET_SERVER_URL);
 
     socketRef.current.emit("joinRoom", { roomId });
 
     socketRef.current.on("codeUpdate", (newCode) => {
+      
       isRemoteUpdate.current = true;
       setCode(newCode);
     });
@@ -41,21 +46,23 @@ export default function CollaborativeEditor() {
     }
     isRemoteUpdate.current = false;
   };
-
+ 
   return (
     <div className={styles.container} >
-
+{/* 
        <Editor
           height="100%"
           language="javascript"
           theme="vs-dark"
           value={code}
           onChange={handleEditorChange}
-        />
-      <div style={{ flex: 1 }}>
-       
-      </div>
-        {/* <MainCodeWindow /> */}
+        /> */}
+      {/* <div style={{ flex: 1 }}>
+      </div> */}
+         <MainCodeWindow setCode={(value)=>{
+            handleEditorChange(value)
+
+         }} code={code} />
       <div
         style={{
           width: 200,

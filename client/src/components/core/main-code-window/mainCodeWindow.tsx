@@ -21,24 +21,15 @@ const languageOptions: LanguageOption[] = [
   {id:51, name: "C#"},
   {id: 62, name: 'java 13.0.1' },
 ];
-const rustHelloWorld = `// proyecto inicial, para participar en el Hackathon de Midudev y Clerk
-// Puedes escribir tu código aquí
-// ¡Diviértete programando!
-// 🦀🦀🦀
 
-
-fn main() {
-    println!("Adios mundo cruel!...   T-T");
-}`;
 
 interface Props{
   users?: any[];
-  setExternalCode?: (value: any) => void;
-  externalValue?: string | null;
+  code: string;
+  setCode: (value: string) => void;
 }
 
-const MainCodeWindow: React.FC = ({ users , setExternalCode, externalValue }: Props) => {
-  const [code, setCode] = useState<string>(rustHelloWorld);
+const MainCodeWindow: React.FC = ({ users, code, setCode }: Props) => {
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -54,7 +45,7 @@ const MainCodeWindow: React.FC = ({ users , setExternalCode, externalValue }: Pr
       },
       body: JSON.stringify({
         language_id: languageId,
-        source_code: code,
+        source_code: code, 
       }),
     });
 
@@ -118,11 +109,11 @@ const MainCodeWindow: React.FC = ({ users , setExternalCode, externalValue }: Pr
     }
     setLoading(false);
   };
+
 useEffect(() => {
   console.log(users);
 }, [users]); // Agregar users como dependencia para que se ejecute cada vez que cambie
  
-
   return (
     <div className={styles.container}>
       <header>
@@ -152,14 +143,10 @@ useEffect(() => {
       </select>
         <h1 >Editor de Código con Judge0 (Polling)</h1>
       </header>
-
+      
       
 
-      <CodeEditor language={language.name} theme="vs-dark" value={externalValue ?? code} onChange={setCode} externalOnChange={()=>{
-        if (setExternalCode) {
-          setExternalCode(code);
-        }
-      }} />
+      <CodeEditor language={language.name} code={code} setCode={setCode}  />
 
       <div className={styles.console}>
     <section>

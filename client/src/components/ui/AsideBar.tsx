@@ -171,21 +171,35 @@ export const Basic = ({ props, onChange}: Props) => {
             <NavItem icon={<Interviews />} value="9" onClick={() => navigate(COLABORATIVE_ROOM_PATH)}>
               Colaborative room
             </NavItem>
-          <NavItem href={linkDestination} icon={<Announcements />} value="2">
-            Announcements
-          </NavItem>
-          <NavItem
+            <NavItem
             href={linkDestination}
             icon={<EmployeeSpotlight />}
             value="3"
           >
-            Employee Spotlight
+            Moises AI
+          </NavItem>
+          <NavDivider />
+          <NavSectionHeader>Organizations</NavSectionHeader>
+          <NavCategory value="16">
+            <NavCategoryItem icon={<CareerDevelopment />}>
+              Career Development
+            </NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem href={linkDestination} value="17">
+                Career Paths
+              </NavSubItem>
+              <NavSubItem href={linkDestination} value="18">
+                Planning
+              </NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+          {/* <NavItem href={linkDestination} icon={<Announcements />} value="2">
+            Announcements
           </NavItem>
           <NavItem icon={<Search />} href={linkDestination} value="4">
             Profile Search
-          </NavItem>
-          
-          <NavSectionHeader>Employee Management</NavSectionHeader>
+          </NavItem> */}
+          {/* <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>
               Job Postings
@@ -217,7 +231,6 @@ export const Basic = ({ props, onChange}: Props) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-
           <NavSectionHeader>Learning</NavSectionHeader>
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
@@ -234,13 +247,14 @@ export const Basic = ({ props, onChange}: Props) => {
                 Planning
               </NavSubItem>
             </NavSubItemGroup>
-          </NavCategory>
+          </NavCategory> */}
           <NavDivider />
+          <NavSectionHeader>Integratios</NavSectionHeader>
           <NavItem target="_blank" icon={<Analytics />} value="19">
-            Workforce Data
+            Github
           </NavItem>
           <NavItem href={linkDestination} icon={<Reports />} value="20">
-            Reports
+            Discord
           </NavItem>
         </NavDrawerBody>
       </NavDrawer>

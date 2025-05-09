@@ -20,6 +20,7 @@ export default function CreateRoom() {
       });
       const { roomId } = res.data;
       navigate(`room/${roomId}`); // Redirige a la sala
+    }catch(err) { 
       console.log(err);
       setError("Error creando la sala");
     } finally {
