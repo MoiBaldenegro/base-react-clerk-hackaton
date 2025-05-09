@@ -81,4 +81,16 @@
   .selectOutline::-msExpand {
     display: none;
   }
+
+  .onlineUsers{
+    flex: 1;
+    display: flex; 
+    gap: 16px;
+    
+    >h3{
+      font-size: 18px;
+                font-weight: 400;
+                color: var(--text-color);
+    }
+  }
   

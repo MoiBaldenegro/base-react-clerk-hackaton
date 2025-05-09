@@ -1,5 +1,5 @@
 import CodeEditor from '../../code-editor/codeEditor';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './mainCodeWindow.module.css';
 import { Button } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
@@ -31,8 +31,13 @@ fn main() {
     println!("Adios mundo cruel!...   T-T");
 }`;
 
+interface Props{
+  users?: any[];
+  setExternalCode?: (value: any) => void;
+  externalValue?: string | null;
+}
 
-const MainCodeWindow: React.FC = () => {
+const MainCodeWindow: React.FC = ({ users , setExternalCode, externalValue }: Props) => {
   const [code, setCode] = useState<string>(rustHelloWorld);
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
@@ -113,11 +118,23 @@ const MainCodeWindow: React.FC = () => {
     }
     setLoading(false);
   };
+useEffect(() => {
+  console.log(users);
+}, [users]); // Agregar users como dependencia para que se ejecute cada vez que cambie
  
 
   return (
     <div className={styles.container}>
       <header>
+        <div className={styles.onlineUsers}>
+        <h3>Usuarios conectados: </h3>
+        <ul>
+          {users?.length === 0 && <li>0</li>}
+          {users?.map((user) => (
+            <li key={user.id}>{user?.id ?? "unknown"}</li>
+          ))}
+        </ul>
+      </div>
       <select
         value={language.id}
         onChange={(e) => {
@@ -138,10 +155,13 @@ const MainCodeWindow: React.FC = () => {
 
       
 
-      <CodeEditor language={language.name} theme="vs-dark" value={code} onChange={setCode}   />
+      <CodeEditor language={language.name} theme="vs-dark" value={externalValue ?? code} onChange={setCode} externalOnChange={()=>{
+        if (setExternalCode) {
+          setExternalCode(code);
+        }
+      }} />
 
       <div className={styles.console}>
-      
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>
     <Button appearance="outline" onClick={()=> setOutput("")} disabled={loading} className={styles.runButton} >Limpiar consola</Button>

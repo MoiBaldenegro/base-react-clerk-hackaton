@@ -2,6 +2,8 @@ import Editor from "@monaco-editor/react";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import MainCodeWindow from "../core/main-code-window/mainCodeWindow";
+import styles from "./example.module.css";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
@@ -41,16 +43,19 @@ export default function CollaborativeEditor() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      <div style={{ flex: 1 }}>
-        <Editor
+    <div className={styles.container} >
+
+       <Editor
           height="100%"
           language="javascript"
           theme="vs-dark"
           value={code}
           onChange={handleEditorChange}
         />
+      <div style={{ flex: 1 }}>
+       
       </div>
+        {/* <MainCodeWindow /> */}
       <div
         style={{
           width: 200,

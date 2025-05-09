@@ -3,11 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Landing from './Routes/Landing';
 import {
       FluentProvider,
-      teamsDarkTheme,
-      teamsHighContrastTheme,
-      teamsLightTheme,
       webDarkTheme,
-      webLightTheme,
 } from "@fluentui/react-components";
 import { Home } from './Routes/Home';
 import {  CreateOrganizationComponent } from './components/organizations/createOrganization/createOrganization';

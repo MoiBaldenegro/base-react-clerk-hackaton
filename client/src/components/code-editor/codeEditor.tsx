@@ -8,11 +8,12 @@ interface CodeEditorProps {
   value: string;
   onChange: (value: string | undefined) => void;
   height?: string;
+  externalOnChange?: () => void;
 }
 
 
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ language, theme, value, onChange , isAsideOpen, height }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ language, theme, value, onChange , isAsideOpen, height, externalOnChange }) => {
   const editorRef = useRef(null);
 
   
@@ -35,7 +36,12 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ language, theme, value, onChang
       defaultLanguage={language}
       defaultValue={value}
       theme={theme}
-      onChange={onChange}
+      onChange={(value) => {
+        onChange(value || '');
+        if (externalOnChange) {
+          externalOnChange();
+        }
+      }}
       options={{
         fontSize: 16,
         minimap: { enabled: true},

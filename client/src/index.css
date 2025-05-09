@@ -75,6 +75,10 @@ html{
 }
 
 *{
+
+  ul, ol {
+  list-style: none;
+}
   /* Para Chrome, Edge, Safari */
 .miScroll {
   scrollbar-width: thin;                 /* Firefox: barra delgada */
