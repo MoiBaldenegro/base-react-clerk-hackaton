@@ -12,7 +12,7 @@ import { Dashboard } from './components/dashboard/Dashboard';
 import { PersonalEditor } from './components/personal-editor/personalEditor';
 import CreateRoom from './components/colaborative-room/colaborativeRoom';
 import CollaborativeEditor from './components/examples/colaborativeEditor.example';
-import { PersonalChat } from './components/chat/PersonalChat';
+import { MoisesChat } from './components/examples/moisesChat';
 
 function App() {
 
@@ -46,7 +46,7 @@ function App() {
     },
     {
       path: MOISES_PATH,
-      element:  <PersonalChat />
+      element:  <MoisesChat/>
 
     }
   ]},
