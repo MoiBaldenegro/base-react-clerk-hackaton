@@ -5,10 +5,11 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
-    padding: 8px;
+    padding: 16px;
 
     >h1{
-      font-weight: 200;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .guard{

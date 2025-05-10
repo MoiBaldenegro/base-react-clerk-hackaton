@@ -1,6 +1,7 @@
 import styles from "./moisesChat.module.css";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
+import { internalPromt } from "./internalPromt";
 
 export const MoisesChat = () => {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -92,7 +93,7 @@ export const MoisesChat = () => {
 
     const data = {
       model: "gpt-4o-mini",
-      messages: [{ role: "user", content: userPrompt }],
+      messages: [{ role: "user", content:  `${internalPromt} La solicitud del es: ${userPrompt}`}],
     };
 
     axios
