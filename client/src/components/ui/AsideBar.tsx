@@ -58,7 +58,7 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from "@fluentui/react-icons";
-import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, DASHBOARD_PATH} from "../../helpers/paths";
+import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, DASHBOARD_PATH, MOISES_PATH} from "../../helpers/paths";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -175,6 +175,7 @@ export const Basic = ({ props, onChange}: Props) => {
             href={linkDestination}
             icon={<EmployeeSpotlight />}
             value="3"
+            onClick={() => navigate(MOISES_PATH)}
           >
             Moises AI
           </NavItem>
