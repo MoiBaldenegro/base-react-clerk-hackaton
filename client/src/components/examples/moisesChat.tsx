@@ -1,4 +1,3 @@
-
 import styles from "./moisesChat.module.css";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
@@ -15,6 +14,7 @@ export const MoisesChat = () => {
 
   const indexRef = useRef(0);
   const typingTimeoutRef = useRef(null);
+  const responseContainerRef = useRef(null); // Referencia para el contenedor de respuesta
 
   // Función para limpiar texto y evitar caracteres invisibles
   const limpiarTexto = (text) => {
@@ -39,7 +39,16 @@ export const MoisesChat = () => {
     indexRef.current = 0;
 
     const typeNextChar = () => {
-      setRespuestaVisible((prev) => prev + textoArray[indexRef.current - 1]);
+      setRespuestaVisible((prev) => {
+        // Hacer scroll al contenedor después de añadir un carácter
+        if (responseContainerRef.current) {
+          setTimeout(() => {
+            responseContainerRef.current.scrollTop = responseContainerRef.current.scrollHeight;
+          }, 0);
+        }
+        return prev + textoArray[indexRef.current - 1];
+      });
+      
       indexRef.current++;
 
       if (indexRef.current < textoArray.length) {
@@ -111,7 +120,7 @@ export const MoisesChat = () => {
   return (
     <div className={styles.container}>
       <h1>MOISES AI</h1>
-       <div className={styles.responseContainer}>
+       <div ref={responseContainerRef} className={styles.responseContainer}>
         <p className={styles.response}>{respuestaVisible}</p>
       </div>
       

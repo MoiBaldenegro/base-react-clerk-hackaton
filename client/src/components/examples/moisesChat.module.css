@@ -1,68 +1,19 @@
-.container {
-  border: 1px solid yellow;
-  height: 100dvh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  justify-content: space space-between;
+.container{
+    border: 1px solid yellow;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  color: #61dafb;
-  text-shadow: 0 0 8px #61dafb;
-}
-
-.button {
-  display: block;
-  margin: 0 auto 1.5rem auto;
-  padding: 0.6rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e1e2f;
-  background: #61dafb;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-
-.button:disabled {
-  background: #3a3a4d;
-  cursor: not-allowed;
-  color: #888;
-}
-
-.button:not(:disabled):hover {
-  background: #21a1f1;
-}
-
-.error {
-  color: #ff6b6b;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
+/* Estilos para hacer que el texto se vea mejor en el área de respuesta */
 .response {
-  background: #2a2a40;
-  padding: 1rem 1.2rem;
-  border-radius: 10px;
-  min-height: 120px;
-  font-size: 1.05rem;
+  white-space: pre-wrap; /* Preserva saltos de línea y espacios */
+  margin: 0;
   line-height: 1.5;
-  white-space: pre-wrap;
-  font-family: 'Courier New', Courier, monospace;
-  box-shadow: inset 0 0 10px #00000080;
-  user-select: text;
+  font-size: 16px;
 }
-
-
-/* Añade estos estilos a tu archivo moisesChat.module.css */
 
 .promptContainer {
   width: 100%;
@@ -75,7 +26,7 @@ h1 {
   font-size: 16px;
   border: 2px solid #3f51b5;
   border-radius: 8px;
-  background-color: #f5f5f5;
+  background-color: #1b0606;
   color: #333;
   transition: all 0.3s ease;
 }
@@ -99,8 +50,9 @@ h1 {
   margin-top: 20px;
   padding: 15px;
   border-radius: 8px;
-  background-color: #f0f4ff;
-  min-height: 100px;
+  background-color: #1b0606;
+  
+ flex: 1;
   overflow-y: auto;
-  flex: 1;
+  scroll-behavior: smooth; /* Para un desplazamiento suave */
 }
