@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import {
     Button,
     Image,
@@ -79,9 +80,14 @@ import {
             minim veniam.
           </div>
           <div>
-            <Button size="small" shape="square" appearance="primary">
-              Call to action
+          <SignedOut>
+          <SignInButton  />       
+        </SignedOut>
+           <SignedIn>
+           <Button size="small" shape="square" appearance="primary">
+              Ir al dashboard
             </Button>
+           </SignedIn>
           </div>
         </div>
       </CarouselCard>

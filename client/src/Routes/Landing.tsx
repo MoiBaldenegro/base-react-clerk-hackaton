@@ -16,10 +16,7 @@ const Landing = () => {
   return (
     <div className="landingContainer">
         <header>
-        <SignedOut>
-          <SignInButton />       
-        </SignedOut>
-        <h1>Bienvenido a la plataforma de gestión de contenido</h1>
+       
       </header>
       <LandingCarousel  />
       <main>
