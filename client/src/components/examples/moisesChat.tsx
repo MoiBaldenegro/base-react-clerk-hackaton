@@ -119,7 +119,7 @@ export const MoisesChat = () => {
 
   return (
     <div className={styles.container}>
-      <h1>MOISES AI</h1>
+      <h1>Moises AI</h1>
        <div ref={responseContainerRef} className={styles.responseContainer}>
         <p className={styles.response}>{respuestaVisible}</p>
       </div>

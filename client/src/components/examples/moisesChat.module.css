@@ -1,10 +1,21 @@
 .container{
-    border: 1px solid yellow;
-    height: 100dvh;
+    border: 1px dashed rgba(156, 156, 150, 0.349);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
+    padding: 8px;
+
+    >h1{
+      font-weight: 200;
+    }
+
+    .guard{
+        border: 1px solid blue;
+        height: 100%;
+    }
+    border-radius: 8px;
 }
 
 /* Estilos para hacer que el texto se vea mejor en el área de respuesta */
@@ -17,7 +28,6 @@
 
 .promptContainer {
   width: 100%;
-  margin-bottom: 15px;
 }
 
 .promptInput {
@@ -47,12 +57,11 @@
 }
 
 .responseContainer {
-  margin-top: 20px;
-  padding: 15px;
   border-radius: 8px;
-  background-color: #1b0606;
+  padding: 8px;
+
   
  flex: 1;
   overflow-y: auto;
-  scroll-behavior: smooth; /* Para un desplazamiento suave */
+  scroll-behavior: smooth; 
 }
