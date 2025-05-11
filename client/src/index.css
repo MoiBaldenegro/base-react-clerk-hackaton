@@ -120,6 +120,7 @@ html{
   min-height: 100vh;
   display: flex;
 }
+  */
 
 body::before {
   border-radius: 8px;
@@ -141,4 +142,4 @@ body::before {
   transform-style: flat;
   pointer-events: none;
   z-index: -1;
-} */
+} 
