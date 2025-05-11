@@ -1,3 +1,4 @@
+import { makeStyles, tokens, Divider } from "@fluentui/react-components";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,10 +6,31 @@ import styles from "./colaborativeRoom.module.css";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
-export default function CreateRoom() {
+
+
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "5px",
+  },
+  example: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyItems: "center",
+    minHeight: "96px",
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+});
+
+export const CreateRoom = () => {
   const [roomName, setRoomName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const styles = useStyles();
+
+
   const navigate = useNavigate();
 
   const handleCreate = async () => {
@@ -30,18 +52,58 @@ export default function CreateRoom() {
   };
 
   return (
-    <div className={styles.colaborativeRoom}>
-      <h2>Crear Sala</h2>
-      <input
-        type="text"
-        placeholder="Nombre de la sala"
-        value={roomName}
-        onChange={(e) => setRoomName(e.target.value)}
-      />
-      <button onClick={handleCreate} disabled={loading}>
-        {loading ? "Creando..." : "Crear Sala"}
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className={styles.root}>
+      <div className={styles.example}>
+        <Divider alignContent="start">start</Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider alignContent="center">center (default)</Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider alignContent="end">end</Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider alignContent="start" vertical>
+          start
+        </Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider alignContent="center" vertical>
+          center (default)
+        </Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider alignContent="end" vertical>
+          end
+        </Divider>
+      </div>
     </div>
   );
-}
+};
+
+export default CreateRoom;
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// export default function CreateRoom() {
+  
+
+  
+//   return (
+//     <div className={styles.colaborativeRoom}>
+//       <h2>Crear Sala</h2>
+//       <input
+//         type="text"
+//         placeholder="Nombre de la sala"
+//         value={roomName}
+//         onChange={(e) => setRoomName(e.target.value)}
+//       />
+//       <button onClick={handleCreate} disabled={loading}>
+//         {loading ? "Creando..." : "Crear Sala"}
+//       </button>
+//       {error && <p style={{ color: "red" }}>{error}</p>}
+//     </div>
+//   );
+// }
