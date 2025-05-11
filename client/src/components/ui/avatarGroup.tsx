@@ -8,7 +8,8 @@ import {
 
 type User = {
   id:string,
-  name: string
+  name: string,
+  img: string
 }
 
 interface Props{
@@ -19,7 +20,7 @@ interface Props{
 
 export const AvatarGroupComponent = ({ type, size, users }: Props) => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({
-    items: users.map(item => item.name)
+    items: users.map(item => item.img || item.name || item.id )
   });
 
   return (
