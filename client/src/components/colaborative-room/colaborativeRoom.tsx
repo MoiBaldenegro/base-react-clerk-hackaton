@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./colaborativeRoom.module.css";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
@@ -29,7 +30,7 @@ export default function CreateRoom() {
   };
 
   return (
-    <div>
+    <div className={styles.colaborativeRoom}>
       <h2>Crear Sala</h2>
       <input
         type="text"
