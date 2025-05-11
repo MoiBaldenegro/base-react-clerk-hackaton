@@ -122,7 +122,7 @@ html{
 }
   */
 
-body::before {
+/* body::before {
   border-radius: 8px;
   --size: 64px;
   --line: white;
@@ -142,4 +142,4 @@ body::before {
   transform-style: flat;
   pointer-events: none;
   z-index: -1;
-} 
+}  */

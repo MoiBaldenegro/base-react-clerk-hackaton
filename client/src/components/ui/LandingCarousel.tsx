@@ -32,8 +32,7 @@ import { useNavigate } from "react-router-dom";
     cardContainer: {
       display: "flex",
       flexDirection: "column",
-      gap: "8px",
-  
+      gap: "16px",
       position: "absolute",
       left: "10%",
       top: "25%",
@@ -42,24 +41,20 @@ import { useNavigate } from "react-router-dom";
       maxWidth: "270px",
       width: "50%",
       borderRadius: "8px",
-
+      border: "2px solid rgba(245, 245, 245, 0.35)",
+      boxShadow: "0px 0px 4px  #f5f5f559 inset"
     },
     title: {
       fontSize: "1.5rem",
+      color: "#156fbd",
+      fontWeight: 500,
     },
     subtext: {
       textWrap: "balance"
     },
   });
   
-  const IMAGES = [
-    shot_01,
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
-  ];
+
   const DATA = [
     {
       image: shot_01,
@@ -87,7 +82,7 @@ import { useNavigate } from "react-router-dom";
     return (
       <CarouselCard
         className={classes.bannerCard}
-        aria-label={`${index + 1} of ${IMAGES.length}`}
+        aria-label={`${index + 1} of ${DATA.length}`}
         id={`test-${index}`}
       >
         <Image fit="cover" src={imageSrc} role="presentation" />
@@ -98,15 +93,10 @@ import { useNavigate } from "react-router-dom";
             {description}
           </div>
           <div>
-          <SignedOut>
-          <SignInButton  />       
-        </SignedOut>
-           <SignedIn>
-           {/* <Button size="small" appearance="primary">
-              Ir al dashboard
-            </Button> */}
+          
+           
             <Button appearance="primary" onClick={() => navigate("/home")}>Ir al editor</Button>
-           </SignedIn>
+
 
           </div>
         </div>

@@ -123,7 +123,7 @@ useEffect(() => {
        
        { users?.length && 
         <div className={styles.onlineUsers}>
-          <AvatarGroupComponent type='stack' size='40' users={users}/>
+          <AvatarGroupComponent type='stack' size='36' users={users}/>
         </div >}
       <select
         value={language.id}
