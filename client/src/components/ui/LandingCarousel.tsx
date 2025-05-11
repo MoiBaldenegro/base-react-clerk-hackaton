@@ -60,12 +60,15 @@ import { useNavigate } from "react-router-dom";
     {
       image: shot_01,
       title: "Pair programming",
-      description: "Es perfecto para quien solo quiere escribir y ejecutar rápidamente código colaborativamente con su equipo, en tiempo real. Con un IDE que cuenta con soporte para diversos lenguajes sin necesidad de instalar un entorno completo en su equipo."
+      description: "Es perfecto para quien solo quiere escribir y ejecutar rápidamente código colaborativamente con su equipo, en tiempo real. Con un IDE que cuenta con soporte para diversos lenguajes sin necesidad de instalar un entorno completo en su equipo.",
+      buttonText: "ir el editor"
     },
       {
       image: shot_02,
       title: "Reclutamiento",
-      description: "Ejecuta, prueba y monitorea pruebas tecnicas. Una herramienta excelente para mejorar la calidad del proceso de pruebas tecnicas para el reclutamiento de talento."
+      description: "Ejecuta, prueba y monitorea pruebas tecnicas. Una herramienta excelente para mejorar la calidad del proceso de pruebas tecnicas para el reclutamiento de talento.",
+      buttonText: "Crear sala"
+
     }
   ]
             
@@ -75,8 +78,9 @@ import { useNavigate } from "react-router-dom";
     children: React.ReactNode;
     imageSrc: string;
     index: number;
+    buttonText: string;
   }> = (props) => {
-    const { children, imageSrc, index, description} = props;
+    const { children, imageSrc, index, description, buttonText} = props;
     const classes = useClasses();
     const navigate = useNavigate()
   
@@ -94,7 +98,7 @@ import { useNavigate } from "react-router-dom";
             {description}
           </div>
           <div>
-            <Button appearance="primary" onClick={() => navigate("/home")}>Ir al editor</Button>
+            <Button appearance="primary" onClick={() => navigate("/home/dashboard")}>{buttonText}</Button>
           </div>
         </div>
       </CarouselCard>
@@ -114,7 +118,7 @@ import { useNavigate } from "react-router-dom";
       <CarouselViewport>
         <CarouselSlider>
           {DATA.map((item, index) => (
-            <BannerCard key={`image-${index}`} imageSrc={item.image} index={index} description={item.description}>
+            <BannerCard key={`image-${index}`} buttonText={item.buttonText} imageSrc={item.image} index={index} description={item.description}>
               {item.title}
             </BannerCard>
           ))}
