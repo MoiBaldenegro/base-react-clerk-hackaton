@@ -1,5 +1,5 @@
 import { DrawerProps, shorthands } from "@fluentui/react-components";
-import { UserButton } from "@clerk/clerk-react";
+import { OrganizationSwitcher, UserButton } from "@clerk/clerk-react";
 import * as React from "react";
 import {
   AppItem,
@@ -158,7 +158,7 @@ export const Basic = ({ props, onChange}: Props) => {
             >
             Contoso HR
           </AppItem> */}
-          <UserButton showName />
+      <OrganizationSwitcher hideSlug />
           <NavItem href={linkDestination} icon={<Dashboard />} value="1" onClick={() => navigate(DASHBOARD_PATH)}>
             Dashboard
           </NavItem>

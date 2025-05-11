@@ -3,6 +3,7 @@ import { LandingCarousel } from "../components/ui/LandingCarousel";
 import { PricingTable, SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { HOME_DASHBOARD_PATH } from "../helpers/paths";
+import { People } from "../components/ui/people";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -15,15 +16,22 @@ const Landing = () => {
 
   return (
     <div className="landingContainer">
-        <header>
-       
-      </header>
       <LandingCarousel  />
       <main>
+  
       <SignedIn>
-      <p>Bienvenido {`${user?.firstName}`}, puedes <a href={HOME_DASHBOARD_PATH}>Ir al panel de contenido</a></p>
+         <section >
+          <h2>Bienvenido</h2>
+        <div>
+          <People name={user?.fullName} />
+          <Button appearance="primary">Continuar al home</Button>
+        </div>        
+      </section>
       </SignedIn>
       </main>
+      {/* <footer>
+
+        </footer> */}
     </div>
   );
 }

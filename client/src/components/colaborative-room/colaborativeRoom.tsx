@@ -5,11 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./colaborativeRoom.module.css";
 import { CreatePrivateRoom } from "./create-private-room/createprivateRoom";
 import { CreateOrganization, OrganizationList } from "@clerk/clerk-react";
-
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
-
-
-
 const useStyles = makeStyles({
   root: {
     display: "flex",
