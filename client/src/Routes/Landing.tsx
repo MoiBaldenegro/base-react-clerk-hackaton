@@ -20,13 +20,7 @@ const Landing = () => {
       </header>
       <LandingCarousel  />
       <main>
-      <Button appearance="primary" onClick={() => navigate("/home")}>Iniciar sesion</Button>
       <SignedIn>
-        <UserButton appearance={{
-          elements: {
-            userButtonAvatarBox: { width: "80px", height: "80px"},
-          },
-        }}/>
       <p>Bienvenido {`${user?.firstName}`}, puedes <a href={HOME_DASHBOARD_PATH}>Ir al panel de contenido</a></p>
       </SignedIn>
       </main>

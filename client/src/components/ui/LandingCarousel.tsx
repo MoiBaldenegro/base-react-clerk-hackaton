@@ -93,11 +93,7 @@ import { useNavigate } from "react-router-dom";
             {description}
           </div>
           <div>
-          
-           
             <Button appearance="primary" onClick={() => navigate("/home")}>Ir al editor</Button>
-
-
           </div>
         </div>
       </CarouselCard>
