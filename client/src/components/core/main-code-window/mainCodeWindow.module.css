@@ -4,18 +4,17 @@
     flex-direction: column;
     gap: 8px;
     padding: 8px;
+    padding: 16px;
 
         >header {
             display: flex;
             justify-content: end;
             align-items: center;
-            height: 48px;
             gap: 16px;
-            >h1 {
-                font-size: 18px;
-                font-weight: 400;
-                color: var(--text-color);
-            }
+            margin-bottom: 8px;
+            >div>h3{
+              font-size: 24px;
+            } 
         }
 
         >.console{

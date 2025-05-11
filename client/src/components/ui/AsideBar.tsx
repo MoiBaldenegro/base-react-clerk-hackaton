@@ -187,11 +187,9 @@ export const Basic = ({ props, onChange}: Props) => {
             </NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href={linkDestination} value="17">
-                Career Paths
+               + {" "} Crear una nueva organización 
               </NavSubItem>
-              <NavSubItem href={linkDestination} value="18">
-                Planning
-              </NavSubItem>
+              
             </NavSubItemGroup>
           </NavCategory>
           {/* <NavItem href={linkDestination} icon={<Announcements />} value="2">

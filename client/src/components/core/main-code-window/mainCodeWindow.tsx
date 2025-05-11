@@ -1,8 +1,9 @@
 import CodeEditor from '../../code-editor/codeEditor';
 import React, { useEffect, useState } from 'react';
 import styles from './mainCodeWindow.module.css';
-import { Button } from '@fluentui/react-components';
+import { AvatarGroup, Button } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
+import { AvatarGroupComponent } from '../../ui/avatarGroup';
 
 const API_KEY = import.meta.env.VITE_RAPIDAPI_API_KEY; // Asegúrate de que la variable de entorno esté definida
 
@@ -117,15 +118,13 @@ useEffect(() => {
   return (
     <div className={styles.container}>
       <header>
+        
+       
+       
+       { users?.length && 
         <div className={styles.onlineUsers}>
-        <h3>Usuarios conectados: </h3>
-        <ul>
-          {users?.length === 0 && <li>0</li>}
-          {users?.map((user) => (
-            <li key={user.id}>{user?.id ?? "unknown"}</li>
-          ))}
-        </ul>
-      </div>
+          <AvatarGroupComponent type='stack' size='40' users={users}/>
+        </div >}
       <select
         value={language.id}
         onChange={(e) => {
