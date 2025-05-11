@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import shot_01 from "../../assets/shots/shot_01.webp";
+import shot_02 from "../../assets/shots/shot_02.webp";
 
 import {
     Button,
@@ -62,7 +63,7 @@ import { useNavigate } from "react-router-dom";
       description: "Es perfecto para quien solo quiere escribir y ejecutar rápidamente código colaborativamente con su equipo, en tiempo real. Con un IDE que cuenta con soporte para diversos lenguajes sin necesidad de instalar un entorno completo en su equipo."
     },
       {
-      image: shot_01,
+      image: shot_02,
       title: "Reclutamiento",
       description: "Ejecuta, prueba y monitorea pruebas tecnicas. Una herramienta excelente para mejorar la calidad del proceso de pruebas tecnicas para el reclutamiento de talento."
     }
