@@ -141,7 +141,6 @@ useEffect(() => {
           </option>
         ))}
       </select>
-        <h1 >Editor de Código con Judge0 (Polling)</h1>
       </header>
       
       

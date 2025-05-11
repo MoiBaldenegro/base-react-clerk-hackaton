@@ -49,37 +49,9 @@ export default function CollaborativeEditor() {
  
   return (
     <div className={styles.container} >
-{/* 
-       <Editor
-          height="100%"
-          language="javascript"
-          theme="vs-dark"
-          value={code}
-          onChange={handleEditorChange}
-        /> */}
-      {/* <div style={{ flex: 1 }}>
-      </div> */}
          <MainCodeWindow setCode={(value)=>{
             handleEditorChange(value)
-
-         }} code={code} />
-      <div
-        style={{
-          width: 200,
-          backgroundColor: "#1e1e1e",
-          color: "white",
-          padding: "1rem",
-          overflowY: "auto",
-        }}
-      >
-        <h3>Usuarios conectados</h3>
-        <ul>
-          {users.length === 0 && <li>No hay usuarios</li>}
-          {users.map((user) => (
-            <li key={user.id}>{user.name || user.id}</li>
-          ))}
-        </ul>
-      </div>
+         }} code={code} users={users} />
     </div>
   );
 }
