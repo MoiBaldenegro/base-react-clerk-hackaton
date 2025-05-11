@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./colaborativeRoom.module.css";
 import { CreatePrivateRoom } from "./create-private-room/createprivateRoom";
+import { CreateOrganization, OrganizationList } from "@clerk/clerk-react";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
@@ -21,7 +22,6 @@ const useStyles = makeStyles({
   },
   example: {
     display: "flex",
-    flexDirection: "column",
     alignItems: "center",
     justifyItems: "center",
     backgroundColor: tokens.colorNeutralBackground1,
@@ -64,32 +64,25 @@ export const CreateRoom = () => {
     }>
       <div className={styles.root}>
       <div className={styles.example}>
-        <div>
+        <div style={{display: "flex"}}>
         <CreatePrivateRoom/>
           <Button> Crear sala </Button>
         </div>
+        <Divider alignContent="end" vertical/>
+          <div>
+            2
+          </div>
+      </div>
         <Divider alignContent="start">start</Divider>
-      </div>
       <div className={styles.example}>
-        <Divider alignContent="center">center (default)</Divider>
+        <CreateOrganization />
+        <Divider alignContent="end" vertical/>
+    <div>
+      <OrganizationList />
+    </div>
       </div>
-      <div className={styles.example}>
-        <Divider alignContent="end">end</Divider>
-      </div>
-      <div className={styles.example}>
-        <Divider alignContent="start" vertical>
-        </Divider>
-      </div>
-      <div className={styles.example}>
-        <Divider alignContent="center" vertical>
-          center (default)
-        </Divider>
-      </div>
-      <div className={styles.example}>
-        <Divider alignContent="end" vertical>
-          end
-        </Divider>
-      </div>
+
+     
     </div>
     </div>
   );

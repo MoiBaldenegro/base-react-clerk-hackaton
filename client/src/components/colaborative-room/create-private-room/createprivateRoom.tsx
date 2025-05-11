@@ -24,8 +24,8 @@ const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
 
 export const CreatePrivateRoom = () => (
   <Field
-    label="Third party input"
-    hint="Use a render function to properly associate the label with the control."
+    label="Nombre de la sala"
+    hint="El nombre sera asociado a un identificador el cual podras compartir con tu equipo."
   >
     {(fieldProps) => <CatInput {...fieldProps} />}
   </Field>
