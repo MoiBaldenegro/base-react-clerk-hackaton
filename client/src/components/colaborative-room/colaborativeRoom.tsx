@@ -1,8 +1,9 @@
-import { makeStyles, tokens, Divider } from "@fluentui/react-components";
+import { makeStyles, tokens, Divider, Button } from "@fluentui/react-components";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./colaborativeRoom.module.css";
+import { CreatePrivateRoom } from "./create-private-room/createprivateRoom";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
@@ -13,13 +14,16 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     rowGap: "5px",
+    border: "1px solid #d6d6d666",
+    height: "100%",
+    padding: "16px",
+    borderRadius: "8px"
   },
   example: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyItems: "center",
-    minHeight: "96px",
     backgroundColor: tokens.colorNeutralBackground1,
   },
 });
@@ -52,8 +56,18 @@ export const CreateRoom = () => {
   };
 
   return (
-    <div className={styles.root}>
+    <div style={
+      {
+        padding: "16px",
+        height: "100dvh"
+      }
+    }>
+      <div className={styles.root}>
       <div className={styles.example}>
+        <div>
+        <CreatePrivateRoom/>
+          <Button> Crear sala </Button>
+        </div>
         <Divider alignContent="start">start</Divider>
       </div>
       <div className={styles.example}>
@@ -64,7 +78,6 @@ export const CreateRoom = () => {
       </div>
       <div className={styles.example}>
         <Divider alignContent="start" vertical>
-          start
         </Divider>
       </div>
       <div className={styles.example}>
@@ -77,6 +90,7 @@ export const CreateRoom = () => {
           end
         </Divider>
       </div>
+    </div>
     </div>
   );
 };

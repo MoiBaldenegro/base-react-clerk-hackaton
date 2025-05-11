@@ -21,7 +21,6 @@ export const Dashboard = () => {
   // console.log(sessionList);
 
 
-
     /* Esto nos interesa */ 
   // const organization = useOrganization();
   // console.log(organization)
@@ -107,6 +106,9 @@ export const Dashboard = () => {
       <div>5</div>
       <div>
       <PricingTable />
+        <article>
+          Aca pondremos todos los beneficios segun el plan que se tenga activo.
+        </article>
       </div>
     </main>
   )

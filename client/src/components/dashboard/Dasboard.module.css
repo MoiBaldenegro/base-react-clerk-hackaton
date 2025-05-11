@@ -8,7 +8,7 @@
     gap: 16px;
 
     >div{
-        border: 1px dashed rgba(245, 245, 245, 0.438);
+        border: 1px solid #d6d6d666;
         border-radius: 16px;
         padding: 1rem;
     }
