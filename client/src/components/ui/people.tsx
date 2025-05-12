@@ -8,7 +8,7 @@ export const People = ({ name }: Props) => {
   return (
     <Persona
       name={name}
-      secondaryText="Disponible"
+      secondaryText="Verificado"
       presence={{ status: "available" }}
       avatar={{
         image: {

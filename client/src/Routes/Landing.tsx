@@ -24,7 +24,7 @@ const Landing = () => {
           <h2>Bienvenido</h2>
         <div>
           <People name={user?.fullName} />
-          <Button appearance="primary">Continuar al home</Button>
+          <Button appearance="primary" onClick={()=> navigate("/home/dashboard")} >Continuar al home</Button>
         </div>        
       </section>
       </SignedIn>

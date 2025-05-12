@@ -1,5 +1,18 @@
 .workspace{
     height: 100dvh;
     display: flex;
-    flex-direction: column;
+}
+
+/* Sidebar container */
+.sidebarContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
 }

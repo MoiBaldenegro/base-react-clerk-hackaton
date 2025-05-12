@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import MainCodeWindow from "../core/main-code-window/mainCodeWindow";
 import styles from "./example.module.css";
 import { useEditorStore } from "../../store/editor.store";
+import MoisesSidebar from "../colaborative-room/moises/moisesIA";
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
@@ -52,6 +53,7 @@ export default function CollaborativeEditor() {
          <MainCodeWindow setCode={(value)=>{
             handleEditorChange(value)
          }} code={code} users={users} />
+         {/* <MoisesSidebar /> */}
     </div>
   );
 }

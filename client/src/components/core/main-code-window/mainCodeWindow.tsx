@@ -28,9 +28,10 @@ interface Props{
   users?: any[];
   code: string;
   setCode: (value: string) => void;
+  openChat: (value: string) => void;
 }
 
-const MainCodeWindow: React.FC = ({ users, code, setCode }: Props) => {
+const MainCodeWindow: React.FC = ({ users, code, setCode, openChat }: Props) => {
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -150,7 +151,7 @@ useEffect(() => {
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>
     <Button appearance="outline" onClick={()=> setOutput("")} disabled={loading} className={styles.runButton} >Limpiar consola</Button>
-    <Button appearance="outline" shape="circular" onClick={()=> alert("Bienvbenido a Moises IA")} disabled={loading} className={styles.runButton} >Moises AI</Button>
+    <Button appearance="outline" shape="circular" onClick={openChat} disabled={loading} className={styles.runButton} >Moises AI</Button>
 
     </section>
       <pre className="mt-4 p-4 bg-gray-100 rounded h-40 overflow-auto whitespace-pre-wrap">{output}</pre>

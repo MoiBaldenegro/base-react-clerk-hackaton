@@ -114,7 +114,7 @@ import { useNavigate } from "react-router-dom";
   };
   
   export const LandingCarousel = () => (
-    <Carousel groupSize={1} circular announcement={getAnnouncement}>
+    <Carousel groupSize={1} circular announcement={getAnnouncement} defaultChecked={true} >
       <CarouselViewport>
         <CarouselSlider>
           {DATA.map((item, index) => (
@@ -132,7 +132,7 @@ import { useNavigate } from "react-router-dom";
       >
         <CarouselNav>
           {(index) => (
-            <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+            <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} defaultChecked={true} />
           )}
         </CarouselNav>
       </CarouselNavContainer>
