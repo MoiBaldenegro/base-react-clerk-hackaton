@@ -112,3 +112,38 @@ html{
 }
 
 }
+
+/* body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+}
+  */
+
+/* body::before {
+  border-radius: 8px;
+  --size: 64px;
+  --line: white;
+  content: '';
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: linear-gradient(
+        90deg,
+        var(--line) 1px,
+        transparent 1px var(--size)
+      )
+      50% 100% / var(--size) var(--size),
+    linear-gradient(0deg, var(--line) 1px, transparent 1px var(--size)) 80% 150% /
+      var(--size) var(--size);
+  mask: linear-gradient(to top, transparent 16%, white);
+  transform-style: flat;
+  pointer-events: none;
+  z-index: -1;
+}  */
+
+body, #root{
+  height: 100dvh;
+}

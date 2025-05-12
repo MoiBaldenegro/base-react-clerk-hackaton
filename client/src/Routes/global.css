@@ -1,11 +1,36 @@
 .landingContainer {
+    position: relative;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   
-
     >main{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
+        flex: 1;
+        padding: 12px 32px;
+        background-color: #ffffff11;
+
+        
+    >section{
+        display: flex;
+        flex-direction: column;
+        transition: all 300ms ease;
+        gap: 16px;
+
+        >h2{
+            font-weight: 400;
+        }
+
+        >div{
+            display: flex;
+            gap: 16px;
+        }
+    }
+  
 
     }
 }
@@ -25,3 +50,7 @@
     }
   
 }
+
+
+
+    

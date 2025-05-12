@@ -1,5 +1,5 @@
 import { DrawerProps, shorthands } from "@fluentui/react-components";
-import { UserButton } from "@clerk/clerk-react";
+import { OrganizationSwitcher, UserButton } from "@clerk/clerk-react";
 import * as React from "react";
 import {
   AppItem,
@@ -60,6 +60,8 @@ import {
 } from "@fluentui/react-icons";
 import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, DASHBOARD_PATH, MOISES_PATH} from "../../helpers/paths";
 import { useNavigate } from "react-router-dom";
+import { GitHub } from "../svg/gitHub";
+import { Discord } from "../svg/discord";
 
 const useStyles = makeStyles({
   root: {
@@ -156,7 +158,7 @@ export const Basic = ({ props, onChange}: Props) => {
             >
             Contoso HR
           </AppItem> */}
-          <UserButton showName />
+      <OrganizationSwitcher hideSlug />
           <NavItem href={linkDestination} icon={<Dashboard />} value="1" onClick={() => navigate(DASHBOARD_PATH)}>
             Dashboard
           </NavItem>
@@ -187,11 +189,9 @@ export const Basic = ({ props, onChange}: Props) => {
             </NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href={linkDestination} value="17">
-                Career Paths
+               + {" "} Crear una nueva organización 
               </NavSubItem>
-              <NavSubItem href={linkDestination} value="18">
-                Planning
-              </NavSubItem>
+              
             </NavSubItemGroup>
           </NavCategory>
           {/* <NavItem href={linkDestination} icon={<Announcements />} value="2">
@@ -251,10 +251,10 @@ export const Basic = ({ props, onChange}: Props) => {
           </NavCategory> */}
           <NavDivider />
           <NavSectionHeader>Integratios</NavSectionHeader>
-          <NavItem target="_blank" icon={<Analytics />} value="19">
+          <NavItem target="_blank" icon={<GitHub />} value="19">
             Github
           </NavItem>
-          <NavItem href={linkDestination} icon={<Reports />} value="20">
+          <NavItem href={linkDestination} icon={<Discord/>} value="20">
             Discord
           </NavItem>
         </NavDrawerBody>

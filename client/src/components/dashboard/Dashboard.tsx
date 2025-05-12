@@ -1,9 +1,11 @@
 import styles from './Dasboard.module.css';
-import { OrganizationList, OrganizationSwitcher, useAuth, useClerk, useOrganization, useOrganizationList,  useSession,  useSessionList,  useUser,  Waitlist } from '@clerk/clerk-react'
+import { OrganizationList, OrganizationSwitcher, useAuth, useClerk, useOrganization, useOrganizationList,  UserButton,  useSession,  useSessionList,  useUser,  Waitlist } from '@clerk/clerk-react'
 import {  PricingTable } from '@clerk/clerk-react'
+import {  useState } from 'react';
 
 export const Dashboard = () => {
   const { user } = useUser();
+  const [selectedOrganization, setSelectedOrganization] = useState(null);
   // console.log(user)
 
   // const clerk = useClerk();
@@ -21,18 +23,12 @@ export const Dashboard = () => {
   // console.log(sessionList);
 
 
-
     /* Esto nos interesa */ 
   // const organization = useOrganization();
   // console.log(organization)
 
   const organizationList = useOrganizationList();
   console.log(organizationList)
-
-
-
-
-  
 
   const { isLoaded, setActive, userMemberships } = useOrganizationList({
     userMemberships: {
@@ -48,7 +44,15 @@ export const Dashboard = () => {
   }
 
   return (
-    <main className={styles.dashboard}>
+
+    <>
+     {
+    selectedOrganization ? ( 
+      <main className={styles.dashborad}>
+        <h1>organización DASHBOARD</h1>
+      </main>
+    ) : (
+       <main className={styles.dashboard}>
       {/* <ul>
         {userMemberships.data?.map((mem) => (
           <li key={mem.id}>
@@ -66,16 +70,8 @@ export const Dashboard = () => {
       <PricingTable /> */}
       
       <div>
-        <img src={`${user?.imageUrl}`} alt="avatar" width="50px" />
+        <UserButton showName />
         <ul>
-        <li>
-            <span>
-              Nombre:
-            </span>
-            <span>
-              {user?.fullName}
-            </span>
-          </li>
           <li>
             <span>
               Miembro desde: 
@@ -104,10 +100,18 @@ export const Dashboard = () => {
       </div>
       <div>3</div>
       <div>4</div>
-      <div>5</div>
+      <div>
+      <OrganizationList hidePersonal />
+      </div>
       <div>
       <PricingTable />
+        <article>
+          Aca pondremos todos los beneficios segun el plan que se tenga activo.
+        </article>
       </div>
     </main>
+    )
+   }</>
+  
   )
 }

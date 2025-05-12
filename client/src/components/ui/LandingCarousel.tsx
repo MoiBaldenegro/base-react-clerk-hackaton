@@ -1,3 +1,7 @@
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import shot_01 from "../../assets/shots/shot_01.webp";
+import shot_02 from "../../assets/shots/shot_02.webp";
+
 import {
     Button,
     Image,
@@ -16,6 +20,7 @@ import {
     CarouselSlider,
   } from "@fluentui/react-components";
   import * as React from "react";
+import { useNavigate } from "react-router-dom";
   
   const useClasses = makeStyles({
     bannerCard: {
@@ -28,8 +33,7 @@ import {
     cardContainer: {
       display: "flex",
       flexDirection: "column",
-      gap: "8px",
-  
+      gap: "16px",
       position: "absolute",
       left: "10%",
       top: "25%",
@@ -37,36 +41,53 @@ import {
       padding: "18px",
       maxWidth: "270px",
       width: "50%",
+      borderRadius: "8px",
+      border: "2px solid rgba(245, 245, 245, 0.35)",
+      boxShadow: "0px 0px 4px  #f5f5f559 inset"
     },
     title: {
-      ...typographyStyles.title1,
+      fontSize: "1.5rem",
+      color: "#156fbd",
+      fontWeight: 500,
     },
     subtext: {
-      ...typographyStyles.body1,
+      textWrap: "balance"
     },
   });
   
-  const IMAGES = [
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg",
-    "https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg",
-  ];
+
+  const DATA = [
+    {
+      image: shot_01,
+      title: "Pair programming",
+      description: "Es perfecto para quien solo quiere escribir y ejecutar rápidamente código colaborativamente con su equipo, en tiempo real. Con un IDE que cuenta con soporte para diversos lenguajes sin necesidad de instalar un entorno completo en su equipo.",
+      buttonText: "ir el editor"
+    },
+      {
+      image: shot_02,
+      title: "Reclutamiento",
+      description: "Ejecuta, prueba y monitorea pruebas tecnicas. Una herramienta excelente para mejorar la calidad del proceso de pruebas tecnicas para el reclutamiento de talento.",
+      buttonText: "Crear sala"
+
+    }
+  ]
+            
   
   const BannerCard: React.FC<{
+    description: string,
     children: React.ReactNode;
     imageSrc: string;
     index: number;
+    buttonText: string;
   }> = (props) => {
-    const { children, imageSrc, index } = props;
+    const { children, imageSrc, index, description, buttonText} = props;
     const classes = useClasses();
+    const navigate = useNavigate()
   
     return (
       <CarouselCard
         className={classes.bannerCard}
-        aria-label={`${index + 1} of ${IMAGES.length}`}
+        aria-label={`${index + 1} of ${DATA.length}`}
         id={`test-${index}`}
       >
         <Image fit="cover" src={imageSrc} role="presentation" />
@@ -74,14 +95,10 @@ import {
         <div className={classes.cardContainer}>
           <div className={classes.title}>{children}</div>
           <div className={classes.subtext}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam.
+            {description}
           </div>
           <div>
-            <Button size="small" shape="square" appearance="primary">
-              Call to action
-            </Button>
+            <Button appearance="primary" onClick={() => navigate("/home/dashboard")}>{buttonText}</Button>
           </div>
         </div>
       </CarouselCard>
@@ -97,12 +114,12 @@ import {
   };
   
   export const LandingCarousel = () => (
-    <Carousel groupSize={1} circular announcement={getAnnouncement}>
+    <Carousel groupSize={1} circular announcement={getAnnouncement} defaultChecked={true} >
       <CarouselViewport>
         <CarouselSlider>
-          {IMAGES.map((imageSrc, index) => (
-            <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
-              Card {index + 1}
+          {DATA.map((item, index) => (
+            <BannerCard key={`image-${index}`} buttonText={item.buttonText} imageSrc={item.image} index={index} description={item.description}>
+              {item.title}
             </BannerCard>
           ))}
         </CarouselSlider>
@@ -115,7 +132,7 @@ import {
       >
         <CarouselNav>
           {(index) => (
-            <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
+            <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} defaultChecked={true} />
           )}
         </CarouselNav>
       </CarouselNavContainer>

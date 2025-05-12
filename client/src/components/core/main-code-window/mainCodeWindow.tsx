@@ -1,8 +1,9 @@
 import CodeEditor from '../../code-editor/codeEditor';
 import React, { useEffect, useState } from 'react';
 import styles from './mainCodeWindow.module.css';
-import { Button } from '@fluentui/react-components';
+import { AvatarGroup, Button } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
+import { AvatarGroupComponent } from '../../ui/avatarGroup';
 
 const API_KEY = import.meta.env.VITE_RAPIDAPI_API_KEY; // Asegúrate de que la variable de entorno esté definida
 
@@ -27,9 +28,10 @@ interface Props{
   users?: any[];
   code: string;
   setCode: (value: string) => void;
+  openChat: (value: string) => void;
 }
 
-const MainCodeWindow: React.FC = ({ users, code, setCode }: Props) => {
+const MainCodeWindow: React.FC = ({ users, code, setCode, openChat }: Props) => {
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -117,15 +119,13 @@ useEffect(() => {
   return (
     <div className={styles.container}>
       <header>
+        
+       
+       
+       { users?.length && 
         <div className={styles.onlineUsers}>
-        <h3>Usuarios conectados: </h3>
-        <ul>
-          {users?.length === 0 && <li>0</li>}
-          {users?.map((user) => (
-            <li key={user.id}>{user?.id ?? "unknown"}</li>
-          ))}
-        </ul>
-      </div>
+          <AvatarGroupComponent type='stack' size='36' users={users}/>
+        </div >}
       <select
         value={language.id}
         onChange={(e) => {
@@ -141,7 +141,6 @@ useEffect(() => {
           </option>
         ))}
       </select>
-        <h1 >Editor de Código con Judge0 (Polling)</h1>
       </header>
       
       
@@ -152,7 +151,7 @@ useEffect(() => {
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>
     <Button appearance="outline" onClick={()=> setOutput("")} disabled={loading} className={styles.runButton} >Limpiar consola</Button>
-    <Button appearance="outline" shape="circular" onClick={()=> alert("Bienvbenido a Moises IA")} disabled={loading} className={styles.runButton} >Moises AI</Button>
+    <Button appearance="outline" shape="circular" onClick={openChat} disabled={loading} className={styles.runButton} >Moises AI</Button>
 
     </section>
       <pre className="mt-4 p-4 bg-gray-100 rounded h-40 overflow-auto whitespace-pre-wrap">{output}</pre>

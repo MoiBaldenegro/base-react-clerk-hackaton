@@ -1,0 +1,35 @@
+.sidebar {
+  height: 100%;
+  background-color: white;
+  border-left: 1px solid rgb(229 231 235);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(229 231 235);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.closeButton {
+  padding: 0.25rem;
+  border-radius: 9999px;
+  transition: background-color 200ms;
+}
+
+.closeButton:hover {
+  background-color: rgb(243 244 246);
+}
+
+.content {
+  padding: 1rem;
+  overflow-y: auto;
+  height: calc(100% - 60px);
+}
