@@ -1,11 +1,12 @@
-import { RedirectToSignIn, useAuth } from "@clerk/clerk-react";
+import { RedirectToSignIn, useAuth, useUser } from "@clerk/clerk-react";
 import { Outlet } from 'react-router-dom';
 import { Basic as AsideBar } from '../components/ui/AsideBar';
 import "./global.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
   const { isLoaded, isSignedIn } = useAuth();
+  const { user } = useUser();
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   
   const toggleAside = () => {
@@ -19,6 +20,8 @@ export const Home = () => {
   if (!isSignedIn) {
     return <RedirectToSignIn />;
   }
+
+
   
   return (
     <main className="homeContainer">
