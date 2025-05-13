@@ -3,13 +3,13 @@ import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { internalPromt } from "./internalPromt";
 import { Button, makeStyles } from "@fluentui/react-components";
-import { SendRegular } from "@fluentui/react-icons";
+import { SendRegular, RectangleLandscapeSparkleFilled } from "@fluentui/react-icons";
 
 export const MoisesChat = ({ onClose }) => {
 
   const useClasses = makeStyles({
     
-  icon24: { fontSize: "24px", color: "#fff" },
+  icon24: { fontSize: "24px", color: "#fff", marginLeft: "8px" },
 });
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const apiUrl = import.meta.env.VITE_OPENAI_API_URL;
@@ -131,9 +131,9 @@ export const MoisesChat = ({ onClose }) => {
   return (
     <div className={styles.container}>
       <header>
-        <h1>Moises AI</h1>
+        
         <Button apearance="primary" onClick={onClose} >
-          x
+         Moises AI <RectangleLandscapeSparkleFilled className={classes.icon24} />
         </Button>
       </header>
        <div ref={responseContainerRef} className={styles.responseContainer}>

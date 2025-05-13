@@ -1,9 +1,11 @@
 import CodeEditor from '../../code-editor/codeEditor';
 import React, { useEffect, useState } from 'react';
 import styles from './mainCodeWindow.module.css';
-import { AvatarGroup, Button } from '@fluentui/react-components';
+import { AvatarGroup, Button, makeStyles } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
 import { AvatarGroupComponent } from '../../ui/avatarGroup';
+import { RectangleLandscapeSparkleFilled } from "@fluentui/react-icons";
+
 
 const API_KEY = import.meta.env.VITE_RAPIDAPI_API_KEY; // Asegúrate de que la variable de entorno esté definida
 
@@ -37,6 +39,11 @@ const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen 
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+
+   const useClasses = makeStyles({
+      
+    icon24: { fontSize: "24px", color: "#fff", marginLeft: "8px" },
+  });
 
   // Función para crear submission y obtener token
   async function createSubmission(code: string, languageId: number): Promise<string> {
@@ -113,6 +120,8 @@ const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen 
     }
     setLoading(false);
   };
+    const classes = useClasses();
+
 
 useEffect(() => {
   console.log(users);
@@ -149,7 +158,7 @@ useEffect(() => {
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>
     <Button appearance="outline" onClick={()=> setOutput("")} disabled={loading} className={styles.runButton} >Limpiar consola</Button>
-    <Button appearance="outline" shape="circular" onClick={openChat} disabled={loading} className={styles.runButton} >Moises AI</Button>
+    <Button appearance="outline" shape="circular" onClick={openChat} disabled={loading} className={styles.runButton} >Moises AI <RectangleLandscapeSparkleFilled className={classes.icon24} /></Button>
 
     </section>
       <pre className="mt-4 p-4 bg-gray-100 rounded h-40 overflow-auto whitespace-pre-wrap">{output}</pre>
