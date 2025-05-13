@@ -29,9 +29,11 @@ interface Props{
   code: string;
   setCode: (value: string) => void;
   openChat: (value: string) => void;
+  isAsideOpen: boolean;
+
 }
 
-const MainCodeWindow: React.FC = ({ users, code, setCode, openChat }: Props) => {
+const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen }: Props) => {
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -142,7 +144,7 @@ useEffect(() => {
       
       
 
-      <CodeEditor language={language.name} code={code} setCode={setCode}  />
+      <CodeEditor language={language.name} code={code} setCode={setCode}  isAsideOpen={isAsideOpen}/>
       <div className={styles.console}>
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>

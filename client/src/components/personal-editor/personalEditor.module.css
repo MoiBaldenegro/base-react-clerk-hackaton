@@ -1,7 +1,6 @@
 .workspace{
     height: 100dvh;
     display: flex;
-    border: 1px solid;
 }
 
 /* Sidebar container */
@@ -13,6 +12,7 @@
   transform: translateX(100%);
   transition: transform 300ms ease-in-out;
   z-index: 9999;
+  height: 100dvh; 
 }
 
 .sidebarOpen {

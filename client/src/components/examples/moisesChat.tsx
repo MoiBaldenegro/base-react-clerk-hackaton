@@ -2,8 +2,15 @@ import styles from "./moisesChat.module.css";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { internalPromt } from "./internalPromt";
+import { Button, makeStyles } from "@fluentui/react-components";
+import { SendRegular } from "@fluentui/react-icons";
 
-export const MoisesChat = () => {
+export const MoisesChat = ({ onClose }) => {
+
+  const useClasses = makeStyles({
+    
+  icon24: { fontSize: "24px", color: "#fff" },
+});
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const apiUrl = import.meta.env.VITE_OPENAI_API_URL;
 
@@ -118,15 +125,23 @@ export const MoisesChat = () => {
       });
   };
 
+    const classes = useClasses();
+
+
   return (
     <div className={styles.container}>
-      <h1>Moises AI</h1>
+      <header>
+        <h1>Moises AI</h1>
+        <Button apearance="primary" onClick={onClose} >
+          x
+        </Button>
+      </header>
        <div ref={responseContainerRef} className={styles.responseContainer}>
         <p className={styles.response}>{respuestaVisible}</p>
       </div>
       
       {/* Campo de entrada para el prompt */}
-      <div className={styles.promptContainer}>
+      <div className={`${styles.promptContainer} ${styles.promptInput}`}>
         <input
           type="text"
           value={userPrompt}
@@ -136,12 +151,13 @@ export const MoisesChat = () => {
           className={styles.promptInput}
           disabled={cargando}
         />
-      </div>
-
-      <button onClick={handleButtonClick} disabled={cargando} className={styles.button}>
-        {cargando ? "Pensando..." : "Preguntar"}
+        <button onClick={handleButtonClick} disabled={cargando} className={styles.button}>
+        <SendRegular
+          className={classes.icon24}
+          aria-label="SendRegular size 24"
+        />
       </button>
-      
+      </div> 
       {error && <p className={styles.error}>{error}</p>}
      
     </div>

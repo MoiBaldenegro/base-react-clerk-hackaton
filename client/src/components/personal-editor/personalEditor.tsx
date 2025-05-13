@@ -24,17 +24,18 @@ const code = useEditorStore((state) => state.code);
 const setCode = useEditorStore((state) => state.setCode);
   return (
     <main className={styles.workspace} >
-        <MainCodeWindow setCode={setCode} code={code} openChat={()=> setOpenChat(!openChat)}/>
+        <MainCodeWindow setCode={setCode} code={code} openChat={()=> setOpenChat(!openChat)} isAsideOpen={false} />
          <div
-        className={`${styles.sidebarContainer} ${openChat ? styles.sidebarOpen : ''}`}
-        style={{ width: "420px" }}
-          >
-        <MoisesSidebar children="children" isOpen={openChat} onClose={()=> {
-          setOpenChat(!openChat)
-        }} > 
-          <MoisesChat />
+            className={`${styles.sidebarContainer} ${openChat ? styles.sidebarOpen : ''}`}
+            style={{ width: "420px" }}
+              >
+              <MoisesSidebar children="children" isOpen={openChat} onClose={()=> {
+                setOpenChat(!openChat)
+              }} > 
+                <MoisesChat onClose={()=> {
+                setOpenChat(!openChat)
+              }}/>
         </MoisesSidebar>
-       
       </div> 
     </main>
   )

@@ -18,17 +18,9 @@ const MoisesSidebar: React.FC<SidebarProps> = ({
       className={styles.sidebar}
       style={{ width }}
     >
-      <div className={styles.header}>
-        <h2 className={styles.title}>Sidebar</h2>
-        <button
-          onClick={onClose}
-          className={styles.closeButton}
-          aria-label="Close sidebar"
-        >
-         X
-        </button>
-      </div>
+        
       <div className={styles.content}>
+        
         {children}
       </div>
     </aside>

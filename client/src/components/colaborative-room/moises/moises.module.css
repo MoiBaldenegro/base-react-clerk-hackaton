@@ -1,16 +1,9 @@
 .sidebar {
   height: 100%;
   background-color: rgb(0, 0, 0);
-  border-left: 1px solid rgb(229 231 235);
+  border-left: 1px solid #d6d6d666;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: 1px solid rgb(229 231 235);
+  height: 100dvh;
 }
 
 .title {
@@ -19,7 +12,6 @@
 }
 
 .closeButton {
-  padding: 0.25rem;
   border-radius: 9999px;
   transition: background-color 200ms;
 }
@@ -29,7 +21,5 @@
 }
 
 .content {
-  padding: 1rem;
   overflow-y: auto;
-  height: calc(100% - 60px);
 }

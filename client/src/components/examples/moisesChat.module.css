@@ -1,16 +1,35 @@
 .container{
-    border: 1px dashed rgba(156, 156, 150, 0.349);
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
     padding: 16px;
+    height: calc(100dvh - 8px);
+    
 
-    >h1{
-      font-weight: 600;
-      margin-bottom: 8px;
+    >header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+        >h1{
+          font-weight: 600;
+          margin-bottom: 8px;
+      }
     }
+
+    .responseContainer{
+      border: 1px solid #d6d6d666;
+    }
+    .promptContainer{
+      display: flex;
+      gap: 8px;
+      color: #d6d6d666;
+    }
+
+    
+
+  
 
     .guard{
         border: 1px solid blue;
@@ -29,17 +48,24 @@
 
 .promptContainer {
   width: 100%;
+  >.button{
+    background: none;
+    border: none;
+  }
+
+ 
 }
 
 .promptInput {
   width: 100%;
-  padding: 12px 15px;
   font-size: 16px;
-  border: 2px solid #3f51b5;
+  padding: 8px 0px;
   border-radius: 8px;
-  background-color: #1b0606;
+  background-color: #000000;
   color: #333;
   transition: all 0.3s ease;
+  outline: none;
+  text-indent: 8px;
 }
 
 .promptInput:focus {
