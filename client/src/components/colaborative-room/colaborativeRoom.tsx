@@ -9,7 +9,6 @@ const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 const useStyles = makeStyles({
   root: {
     display: "flex",
-    flexDirection: "column",
     rowGap: "5px",
     border: "1px solid #d6d6d666",
     height: "100%",
@@ -21,6 +20,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyItems: "center",
     backgroundColor: tokens.colorNeutralBackground1,
+    height: "100%"
   },
 });
 
@@ -55,34 +55,31 @@ export const CreateRoom = () => {
     <div style={
       {
         padding: "16px",
-        height: "100dvh"
+        height: "100dvh",
       }
     }>
       <div className={styles.root}>
       <div className={styles.example}>
-        <div style={{display: "flex"}}>
-        <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
-          <Button onClick={handleCreate} disabled={loading}>
-//         {loading ? "Creando..." : "Crear Sala"}
-//       </Button>
+        <div style={{display: "flex", padding: "16px"}}>
+            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
+            <Button onClick={handleCreate} disabled={loading}>
+            {loading ? "Creando..." : "Crear Sala"}
+            </Button>
         </div>
-        <Divider alignContent="end" vertical/>
-          <div>
-            2
-          </div>
       </div>
-        <Divider alignContent="start">start</Divider>
+      <Divider alignContent="end" vertical/>
       <div className={styles.example}>
-        <CreateOrganization />
-        <Divider alignContent="end" vertical/>
-    <div>
-      <OrganizationList />
-    </div>
+        <div style={{display: "flex", padding: "16px"}}>
+            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
+            <Button onClick={handleCreate} disabled={loading}>
+            {loading ? "Creando..." : "Crear Sala"}
+            </Button>
+        </div>
       </div>
-
-     
+        
+    </div>        
     </div>
-    </div>
+    
   );
 };
 
@@ -93,6 +90,17 @@ export default CreateRoom;
 
 
 // export default function CreateRoom() {
+
+ /* <Divider alignContent="start">start</Divider>
+                <div className={styles.example}>
+                <CreateOrganization />
+                <Divider alignContent="end" vertical/>
+                <div>
+              <OrganizationList />
+              </div>
+
+            
+            </div> */
   
 
   

@@ -1,6 +1,6 @@
 .onlyEditorContainer {
     height: calc(100% - 200px);
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid rgba(245, 245, 245, 0.349);
 }
