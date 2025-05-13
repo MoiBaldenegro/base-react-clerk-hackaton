@@ -61,8 +61,10 @@ export const CreateRoom = () => {
       <div className={styles.root}>
       <div className={styles.example}>
         <div style={{display: "flex"}}>
-        <CreatePrivateRoom/>
-          <Button> Crear sala </Button>
+        <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
+          <Button onClick={handleCreate} disabled={loading}>
+//         {loading ? "Creando..." : "Crear Sala"}
+//       </Button>
         </div>
         <Divider alignContent="end" vertical/>
           <div>
