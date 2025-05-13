@@ -8,6 +8,7 @@ interface CodeEditorProps {
   setCode: (value: string) => void;
   height?: string;
   isAsideOpen: boolean;
+  width: string
 }
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
@@ -16,6 +17,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   setCode,
   isAsideOpen,
   height,
+  width
 }) => {
   const monaco = useMonaco();
   const editorRef = useRef(null);
@@ -54,6 +56,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
       <Editor
         onMount={handleEditorDidMount}
         height={height || "100%"}
+        width={width || "100%"}
         language='javascript'
         value={code}
          onChange={(newValue) => {

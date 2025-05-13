@@ -10,7 +10,7 @@ interface SidebarProps {
 const MoisesSidebar: React.FC<SidebarProps> = ({
   isOpen,
   onClose,
-  width = '320px',
+  width = '420px',
   children,
 }) => {
   return (

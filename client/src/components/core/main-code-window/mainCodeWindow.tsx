@@ -119,9 +119,6 @@ useEffect(() => {
   return (
     <div className={styles.container}>
       <header>
-        
-       
-       
        { users?.length && 
         <div className={styles.onlineUsers}>
           <AvatarGroupComponent type='stack' size='36' users={users}/>
@@ -146,7 +143,6 @@ useEffect(() => {
       
 
       <CodeEditor language={language.name} code={code} setCode={setCode}  />
-
       <div className={styles.console}>
     <section>
     <Button appearance="primary" onClick={runCode} disabled={loading} className={styles.runButton} >{loading ? 'Ejecutando...' : 'Ejecutar Código'}</Button>
