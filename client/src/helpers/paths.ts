@@ -7,3 +7,4 @@ export const WORKSPACE_PATH = "workspace";
 export const CODE_EDITOR_PATH = "code-editor";
 export const COLABORATIVE_ROOM_PATH = "colaborative-room";
 export const MOISES_PATH = "moises-chat"
+export const DISCORD_PATH = "discord"

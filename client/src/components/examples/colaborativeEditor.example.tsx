@@ -10,7 +10,7 @@ import MoisesSidebar from "../colaborative-room/moises/moisesIA";
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
 export default function CollaborativeEditor() {
-   const code = useEditorStore((state) => state.code);
+  const code = useEditorStore((state) => state.code);
   const setCode = useEditorStore((state) => state.setCode);
 
   const { roomId } = useParams();
@@ -19,13 +19,9 @@ export default function CollaborativeEditor() {
   const isRemoteUpdate = useRef(false);
 
   useEffect(() => {
-    
     socketRef.current = io(SOCKET_SERVER_URL);
-
     socketRef.current.emit("joinRoom", { roomId });
-
     socketRef.current.on("codeUpdate", (newCode) => {
-      
       isRemoteUpdate.current = true;
       setCode(newCode);
     });
@@ -52,7 +48,7 @@ export default function CollaborativeEditor() {
     <div className={styles.container} >
          <MainCodeWindow setCode={(value)=>{
             handleEditorChange(value)
-         }} code={code} users={users} />
+         }} code={code} users={users} roomId={roomId} />
          {/* <MoisesSidebar /> */}
     </div>
   );

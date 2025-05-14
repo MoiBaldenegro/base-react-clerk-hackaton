@@ -58,7 +58,7 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from "@fluentui/react-icons";
-import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, DASHBOARD_PATH, MOISES_PATH} from "../../helpers/paths";
+import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, DASHBOARD_PATH, DISCORD_PATH, MOISES_PATH} from "../../helpers/paths";
 import { useNavigate } from "react-router-dom";
 import { GitHub } from "../svg/gitHub";
 import { Discord } from "../svg/discord";
@@ -254,7 +254,7 @@ export const Basic = ({ props, onChange}: Props) => {
           <NavItem target="_blank" icon={<GitHub />} value="19">
             Github
           </NavItem>
-          <NavItem href={linkDestination} icon={<Discord/>} value="20">
+          <NavItem href={linkDestination} icon={<Discord/>} value="20" onClick={() => navigate(DISCORD_PATH)}>
             Discord
           </NavItem>
         </NavDrawerBody>

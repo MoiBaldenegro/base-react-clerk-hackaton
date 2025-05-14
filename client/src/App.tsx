@@ -7,12 +7,13 @@ import {
 } from "@fluentui/react-components";
 import { Home } from './Routes/Home';
 import {  CreateOrganizationComponent } from './components/organizations/createOrganization/createOrganization';
-import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, CREATE_ORGANIZATION_PATH, DASHBOARD_PATH, HOME_PATH, LANDING_PATH, MOISES_PATH} from './helpers/paths';
+import { CODE_EDITOR_PATH, COLABORATIVE_ROOM_PATH, CREATE_ORGANIZATION_PATH, DASHBOARD_PATH, DISCORD_PATH, HOME_PATH, LANDING_PATH, MOISES_PATH} from './helpers/paths';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { PersonalEditor } from './components/personal-editor/personalEditor';
 import CreateRoom from './components/colaborative-room/colaborativeRoom';
 import CollaborativeEditor from './components/examples/colaborativeEditor.example';
 import { MoisesChatPersonal } from './components/chat/moisesChatPersonal';
+import { DiscordContainer } from './components/discord/discord';
 
 function App() {
 
@@ -47,7 +48,10 @@ function App() {
     {
       path: MOISES_PATH,
       element:  <MoisesChatPersonal/>
-
+    },
+    {
+      path: DISCORD_PATH,
+      element:  <DiscordContainer/>
     }
   ]},
   ]);

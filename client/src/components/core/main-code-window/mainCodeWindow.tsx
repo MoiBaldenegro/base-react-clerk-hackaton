@@ -5,6 +5,9 @@ import { AvatarGroup, Button, makeStyles } from '@fluentui/react-components';
 import { SplitButtonComponent } from '../../ui/splitButton';
 import { AvatarGroupComponent } from '../../ui/avatarGroup';
 import { RectangleLandscapeSparkleFilled } from "@fluentui/react-icons";
+import { Discord } from '../../svg/discord';
+import { useRoomStore } from '../../../store/room.store';
+import { useNavigate } from 'react-router-dom';
 
 
 const API_KEY = import.meta.env.VITE_RAPIDAPI_API_KEY; // Asegúrate de que la variable de entorno esté definida
@@ -32,13 +35,15 @@ interface Props{
   setCode: (value: string) => void;
   openChat: (value: string) => void;
   isAsideOpen: boolean;
-
+  roomId: string;
 }
 
-const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen }: Props) => {
+const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen, roomId }: Props) => {
   const [language, setLanguage] = useState<LanguageOption>(languageOptions[3]);
   const [output, setOutput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const setRoom = useRoomStore((state)=> state.setRoom);
+  const navigate = useNavigate();
 
    const useClasses = makeStyles({
       
@@ -122,6 +127,11 @@ const MainCodeWindow: React.FC = ({ users, code, setCode, openChat, isAsideOpen 
   };
     const classes = useClasses();
 
+  const backOut = ()=>{
+    setRoom(null)
+    navigate("/home/colaborative-room")
+  }
+
 
 useEffect(() => {
   console.log(users);
@@ -133,6 +143,11 @@ useEffect(() => {
        { users?.length && 
         <div className={styles.onlineUsers}>
           <AvatarGroupComponent type='stack' size='36' users={users}/>
+          { roomId && <nav>
+            <strong>{roomId.slice(30, 36) }</strong>
+            <Button style={{display: "flex", gap:"8px"}}>Invitar por discord <Discord /> </Button>
+            <Button appearance="primary" onClick={backOut} >Abandonar sala</Button>
+            </nav>}
         </div >}
       <select
         value={language.id}

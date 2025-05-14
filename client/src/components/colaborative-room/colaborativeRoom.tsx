@@ -1,10 +1,11 @@
 import { makeStyles, tokens, Divider, Button } from "@fluentui/react-components";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./colaborativeRoom.module.css";
 import { CreatePrivateRoom } from "./create-private-room/createprivateRoom";
 import { CreateOrganization, OrganizationList } from "@clerk/clerk-react";
+import { useRoomStore } from "../../store/room.store";
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 const useStyles = makeStyles({
   root: {
@@ -40,7 +41,8 @@ export const CreateRoom = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const styles = useStyles();
-  const [privateId, setPrivateId] = useState("M16M16M16");
+  const room = useRoomStore((state)=> state.room);
+  const setRoom = useRoomStore((state)=> state.setRoom);
 
 
   const navigate = useNavigate();
@@ -54,7 +56,8 @@ export const CreateRoom = () => {
         roomName,
       });
       const { roomId } = res.data;
-      navigate(`room/${roomId}`); // Redirige a la sala
+      setRoom(roomId);
+      navigate(`room/${roomId}`); 
     }catch(err) { 
       console.log(err);
       setError("Error creando la sala");
@@ -62,6 +65,12 @@ export const CreateRoom = () => {
       setLoading(false);
     }
   };
+
+  useEffect(()=>{
+    if(room){
+      navigate(`home/colaborative-room/room/${room}`)
+    }
+  }, [])
 
   return (
     <div style={
@@ -73,7 +82,7 @@ export const CreateRoom = () => {
       <div className={styles.root}>
       <div className={styles.example}>
         <div className={styles.exCont}>
-            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value) } label="Nombre de la sala" hint="Obtendras un identificador el cual podras compartir con tu equipo."/>
+            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)} label="Nombre de la sala" hint="Obtendras un identificador el cual podras compartir con tu equipo."/>
             <Button onClick={handleCreate} disabled={loading} style={{marginTop: "16px"}}>
             {loading ? "Creando..." : "Crear Sala"}
             </Button>
@@ -88,7 +97,6 @@ export const CreateRoom = () => {
             </Button>
         </div>
       </div>
-        
     </div>        
     </div>
     
