@@ -7,6 +7,7 @@ const useCatInputStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     columnGap: "4px",
+    width: "100%"
   },
 });
 
@@ -16,22 +17,25 @@ const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
   const styles = useCatInputStyles();
   return (
     <div className={styles.root}>
-      <AnimalCat24Regular />
-      <input {...props} />
+      <AnimalCat24Regular fontSize="32px" />
+      <input {...props} style={{width: "100%", height: "40px", borderRadius: "8px", background: "#000"}} />
     </div>
   );
 };
 interface CreateProps{
   roomName: string,
-  onChange: (value: string)=> void
+  onChange: (value: string)=> void,
+  label: string,
+  hint: string
 }
-export const CreatePrivateRoom = ({ roomName, onChange }:CreateProps) => (
+export const CreatePrivateRoom = ({ roomName, onChange, label, hint }:CreateProps) => (
   <Field
-    label="Nombre de la sala"
-    hint="El nombre sera asociado a un identificador el cual podras compartir con tu equipo."
+    label={label}
+    hint={hint}
     value={roomName}
     onChange={onChange}
+    style={{ display: "flex", flexDirection: "column", alignItems: "center"}}
   >
-    {(fieldProps) => <CatInput {...fieldProps} />}
+    {(fieldProps) => <CatInput {...fieldProps}  />}
   </Field>
-);
+); 

@@ -13,15 +13,26 @@ const useStyles = makeStyles({
     border: "1px solid #d6d6d666",
     height: "100%",
     padding: "16px",
-    borderRadius: "8px"
+    borderRadius: "8px",
   },
   example: {
     display: "flex",
     alignItems: "center",
     justifyItems: "center",
     backgroundColor: tokens.colorNeutralBackground1,
-    height: "100%"
+    height: "100%",
+    width: "100%",
+
   },
+  exCont: {
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    padding: "32px",
+  }
 });
 
 export const CreateRoom = () => {
@@ -29,6 +40,7 @@ export const CreateRoom = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const styles = useStyles();
+  const [privateId, setPrivateId] = useState("M16M16M16");
 
 
   const navigate = useNavigate();
@@ -60,19 +72,19 @@ export const CreateRoom = () => {
     }>
       <div className={styles.root}>
       <div className={styles.example}>
-        <div style={{display: "flex", padding: "16px"}}>
-            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
-            <Button onClick={handleCreate} disabled={loading}>
+        <div className={styles.exCont}>
+            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value) } label="Nombre de la sala" hint="Obtendras un identificador el cual podras compartir con tu equipo."/>
+            <Button onClick={handleCreate} disabled={loading} style={{marginTop: "16px"}}>
             {loading ? "Creando..." : "Crear Sala"}
             </Button>
         </div>
       </div>
       <Divider alignContent="end" vertical/>
       <div className={styles.example}>
-        <div style={{display: "flex", padding: "16px"}}>
-            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)}/>
-            <Button onClick={handleCreate} disabled={loading}>
-            {loading ? "Creando..." : "Crear Sala"}
+        <div className={styles.exCont}>
+            <CreatePrivateRoom roomName={roomName} onChange={(e) => setRoomName(e.target.value)} label="Ingresa ID de sala" hint="Si ya tienes un ID de sala puedes, puedes ingresar a la sala de tu equipo."/>
+            <Button onClick={()=> {navigate(`${privateId}`)}} disabled={loading} style={{marginTop: "16px"}}>
+            {loading ? "Buscando sala" : "Ingresar a sala"}
             </Button>
         </div>
       </div>
